@@ -20,7 +20,7 @@
    shell: monit -t
    register: result
    changed_when: "result.rc != 0"
-   always_run: yes
+   check_mode: no
    tags: [configuration,monit]
 
  - name: ensure monit is running
