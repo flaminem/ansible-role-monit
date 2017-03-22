@@ -11,7 +11,7 @@
 
  - name: create the configuration for monitored services
    template: src="{{ item['service']['template'] }}-template.j2" dest="{{monit_conf_dir}}/conf.d/{{ item['service']['name'] }}.conf" mode=0600
-   with_items: monit_services_monitored
+   with_items: "{{ monit_services_monitored }}"
    when: monit_services_monitored|lower != 'none'
    notify: restart monit
    tags: [configuration,monit]
